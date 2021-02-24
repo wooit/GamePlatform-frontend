@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+  color: white;
+}
+
+.btnGames{
+  order: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 30px;
+  margin: 5px 2px 2px 2px;
+  letter-spacing: 1px;
+  outline: none;
+  color: white;
+  border-radius: 5px;
+  padding-top: 4px;
+  display: inline;
+  justify-content: space-around;
+}
+ 
+#btn-game:hover{
+  background-color: magenta;
+}
+
+#btn-game{
+  display: inline;
+  justify-content: space-around;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: purple;
+  box-shadow: 0 6px magenta;
+}
+
+.NavCss{
+  color: pink;
+  font-size: 2em;
+ 
+}
+.Logo{
+  height: 100px;
+  width: 100px;
+}
+
+.backgroundText{
+  display: inline-block;
+  background-color: rgba(255, 0, 255, 0.274) ;
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
+}
+.backgroundText:hover{
+  background-color: rgba(0, 255, 255, 0.521);
+}

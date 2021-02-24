@@ -1,0 +1,12 @@
+.gameCard{
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.g-card-info{
+    color:white;
+    background-color: rgba(128, 0, 128, 0.842); 
+    font-weight: 900;
+}

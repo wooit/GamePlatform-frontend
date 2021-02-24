@@ -1,0 +1,15 @@
+.Cell {
+    height: 100px;
+    width: 100px;
+    border-radius: 1px;
+    background-color: #263238;
+    transition: background-color 0.7s ease;
+    border-color: magenta;
+    border-collapse: separate;
+ 
+  }
+  
+  .Cell-lit {
+    background-color: cyan;
+  }
+  
