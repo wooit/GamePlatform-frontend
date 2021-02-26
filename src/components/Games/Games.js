@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Lightout from './Lightout/Lightout';
 import Hangman from './Hangman/Hangman';
 
+
+// trouver un moyen de return Games si res.data = true
 function Games(){
     const [choice, setGame] = useState(false);
     

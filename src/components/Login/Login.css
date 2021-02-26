@@ -1,0 +1,23 @@
+.Form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font: 800px;
+}
+.Register{
+    display: flex;
+    flex-direction: column;
+}
+.Connec{
+    display: flex;
+    flex-direction: column;
+}
+.Login-text {
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    margin-top: 0;
+    color:white;
+    background-color: rgba(128, 0, 128, 0.603);
+    font-weight: 900;
+  }
