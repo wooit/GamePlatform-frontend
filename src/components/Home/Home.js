@@ -1,17 +1,34 @@
 import React, { Component } from 'react'
 import GamesDisplay from './GameDisplay/GamesDisplay';
 import TitleFormater from '../Formater/TitleFormater/TitleFormater';
+import HomeLog from './HomeLog';
 
 class Home extends Component {
+    checkIfUserLogged = () =>{
+        if (localStorage.length === 0) {
+            return <HomeLog/>
+        }
+    }
+
+    componentDidMount = () => {
+        console.log(this.props.isconnected);
+      }
     render() {
         return (
             <div>
                 <TitleFormater 
-                    title='Beweb Project' 
-                    subTitle='Préparation à la soutenance' 
+                    title='Game Platform' 
+                    //subTitle='Préparation à la soutenance' 
                     text='un petit aperçu de mon travail réalisé pendant mon stage'  
                 />
-                <h4>Pour tenter votre chance, rendez-vous dans la section Games!!!</h4><br></br><br></br><br></br>
+                 {this.checkIfUserLogged()}
+
+                {/* <>
+                    <h4><a className="backgroundText" id="aTag"href="/login">Connectez vous</a> ou <a className="backgroundText" href="/login">créez votre premier compte</a><br></br>
+                    pour tenter votre chance parmis la liste des jeux disponibles!!! </h4>
+                    <br></br><br></br><br></br>
+                </> */}
+               
                 <GamesDisplay/>
                 <br></br><br></br>
                 <div className="backgroundText">

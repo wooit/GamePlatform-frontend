@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import GameCard from './GameCard/GameCard';
-import lightoutIMG from '../../../assets/games/lightout/lightout.jpg';
+import lightoutIMG from '../../../assets/games/lightout/lightout.png';
 import hangmanIMG from '../../../assets/games/hangman/hangman.webp';
 
 class GamesDisplay extends Component {

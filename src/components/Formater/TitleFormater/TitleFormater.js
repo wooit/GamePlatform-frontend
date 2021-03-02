@@ -3,7 +3,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-class MainContent extends Component {
+class TitleFormater extends Component {
     render() {
         return (
             <div>
@@ -22,4 +22,4 @@ class MainContent extends Component {
         )
     }
 }
-export default MainContent;
+export default TitleFormater;

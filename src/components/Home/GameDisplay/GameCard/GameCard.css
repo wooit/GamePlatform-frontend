@@ -1,8 +1,10 @@
 .gameCard{
     border-radius: 10px;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     cursor: pointer;
+    /* width: 100%;
+    height: auto; */
 }
 
 .g-card-info{

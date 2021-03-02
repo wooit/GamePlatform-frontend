@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-class TextContainer extends Component {
+class TextFormater extends Component {
     render() {
         return (
             <div>
@@ -18,4 +18,4 @@ class TextContainer extends Component {
         )
     }
 }
-export default TextContainer;
+export default TextFormater;

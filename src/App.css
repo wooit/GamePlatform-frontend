@@ -54,3 +54,10 @@
 .backgroundText:hover{
   background-color: rgba(0, 255, 255, 0.521);
 }
+ a {
+  color: cyan !important;
+}
+
+#error-message{
+  font-size: 25px;
+}

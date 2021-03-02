@@ -28,8 +28,8 @@ componentDidMount = async () =>{
         <BrowserRouter>
             <Container className="p-0 background-image" fluid={true}>
               <MyNavbar isconnected={this.state.isconnected}/>
-              <Routes/>
-              <Footer/>
+              <Routes isconnected={this.state.isconnected}/>
+              {/* <Footer/> */}
             </Container>
         </BrowserRouter>
       </div>

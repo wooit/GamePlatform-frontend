@@ -33,8 +33,8 @@ class Login extends Component {
                 localStorage.setItem( 'isconnected', 'yes');
                 window.location = "/"
             } else{
-                //ici on gère l'erreur, on display quelque au user pour lui ERREUR MDP USERNAME
-                this.setState({ error : "Combinaison mot de passe / username incorrect"})
+                //ici on gère l'erreur, on display message au user pour lui ERREUR MDP USERNAME
+                this.setState({ error : "Combinaison mot de passe / nom d'utilisateur incorrect"})
             }
           })
       ;}
@@ -50,15 +50,19 @@ class Login extends Component {
                                 <h2 className="Login-text">Connexion</h2>
                                 <input  type="text" 
                                         name='username'
+                                        placeholder="nom d'utilisateur"
                                         value={this.state.username} 
                                         onChange={this.handleChange}/>
                                 <input  type="text" 
                                         name="password"
+                                        placeholder="mot de passe"
                                         value={this.state.password}
                                         onChange={this.handleChange}/>
                                 <button>Se connecter!!</button>
                             </form>
-                            { this.state.error ? this.state.error : '' }
+                            <div className="backgroundText" id="error-message">
+                                { this.state.error ? this.state.error : '' }
+                            </div>
                         </div>
                     </div>
                 </TextFormater>
