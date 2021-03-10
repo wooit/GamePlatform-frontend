@@ -14,7 +14,7 @@ class GamesDisplay extends Component {
                     id: 0,
                     title: 'Light Out',
                     imgSrc: lightoutIMG,
-                    link: 'https://en.wikipedia.org/wiki/Lights_Out_(game)',
+                    link: 'https://cran.r-project.org/web/packages/lightsout/vignettes/overview.html',
                     selected: false,
                 },
                 {

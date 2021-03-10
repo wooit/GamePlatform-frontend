@@ -13,7 +13,7 @@ class Register extends Component {
         this.handleSubmit = this.handleSubmitReg.bind(this);
     };
 
-    handleChange(evt){
+    handleChange = (evt) =>{
         this.setState({[evt.target.name] : evt.target.value})
         //console.log(evt.target.value)
     }
@@ -25,15 +25,15 @@ class Register extends Component {
           password: this.state.password
         }
         Axios.post('http://localhost:5000/register', { user })
-        .then(res=>{
+        .then(res => {
             console.log(res);
             console.log(res.data);
-            if(res.data[0]){
-                localStorage.setItem( 'isconnected', 'yes');
-                window.location = "/"
-            } else{
-                //ici on gère l'erreur, on display message au user pour lui ERREUR MDP USERNAME
-                this.setState({ error : "Ce nom d'utilisateur est déjà utilisé"})
+            if (res.status !== 200) {
+                this.setState({ error : res.statusText })
+            }
+            else {
+                localStorage.setItem('isconnected', 'yes');
+                window.location = '/'
             }
           })
       }
@@ -61,7 +61,7 @@ class Register extends Component {
                                         onChange={this.handleChange}/>
                                 <button>Se connecter!!</button>
                             </form>
-                            <div className="error-message">
+                            <div className="backgroundText" id="error-message">
                                 { this.state.error ? this.state.error : '' }
                             </div>
                         </div>

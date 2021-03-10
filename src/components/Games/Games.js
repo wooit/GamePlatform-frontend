@@ -13,10 +13,10 @@ function Games(){
            <h2>Choisissez un jeu</h2><br></br>
             <div>
                 <div className="btn-spacing">
-                    <button id="btn-game" className="btnGames" onClick={() => {setGame(true)}}>Light Out</button>
+                    <button id="btn-game" className="btnGames" onClick={() => {setGame(true)}}>Lights Out</button>
                     <button id="btn-game" className="btnGames" onClick={() => {setGame(false)}}>Le Pendu</button>
                 </div>
-                {choice ? <Lightout /> : <Hangman /> }
+                {choice ? <Lightout  nbRows={5} nbCols={5} lightOn={0.25}/> : <Hangman /> }
             </div>
         </div>
     );

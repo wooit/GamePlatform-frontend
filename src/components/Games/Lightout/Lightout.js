@@ -2,76 +2,76 @@ import React, {Component} from "react";
 import Cell from "./Cell/Cell";
 import './Lightout.css';
 
+
 class Lightout extends Component {
-  static defaultProps = {
-    nrows : 5,
-    ncols : 5,
-    chanceLightStartsOn: 0.25
-  }
   constructor(props) {
     super(props);
     this.state = {
       hasWon : false,
-      board : this.createBoard()
+      grid : this.creategrid()
     }
   }
 
-  createBoard() {
-    let board = [];
-    for(let y=0; y<this.props.nrows; y++){
+  creategrid() {
+    let grid = [];
+    for(let x=0; x<this.props.nbRows; x++){
       let row = [];
-      for(let x=0; x<this.props.ncols; x++){
-        row.push(Math.random() < this.props.chanceLightStartsOn)
+      for(let y=0; y<this.props.nbCols; y++){
+        row.push(Math.random() < this.props.lightOn) // si Math random (entre 0 et 1) < 0.25 , la case est true et est allumée
       }
-      board.push(row);
+      grid.push(row);
     }
-    return board
+    return grid
   }
 
   flipCellsAround(coord) {
     //console.log('flipping', coord)
-    let {ncols, nrows} = this.props;
-    let board = this.state.board;
-    let [y, x] = coord.split("-").map(Number);
+    let nbRows = this.props.nbRows;
+    let nbCols = this.props.nbCols;
+    let grid = this.state.grid;
+    let [x, y] = coord.split("-").map(Number);
 
-    function flipCell(y, x) {
-      // if this coord is actually on board, flip it
-      if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
-        board[y][x] = !board[y][x];
+    function flipCell(x, y) {
+      // if this coord is actually on grid, flip it
+      if (x >= 0 && x < nbCols && y >= 0 && y < nbRows) {
+        grid[x][y] = !grid[x][y];
       }
     }
     //QUand je clique une cell, je change la couleur de la cell et de celles d'à coté
-    flipCell(y,x)
-    flipCell(y, x+1)
-    flipCell(y, x-1)
-    flipCell(y+1, x)
-    flipCell(y-1, x)
+    flipCell(x,y)
+    flipCell(x, y+1)
+    flipCell(x, y-1)
+    flipCell(x+1, y)
+    flipCell(x-1, y)
     
     //Chauqe cell dans chaque row doit etre 'false' pour Win
-    let hasWon = board.every( row => row.every(cell => !cell));
-    this.setState({board : board, hasWon : hasWon});
+    let hasWon = grid.every( row => row.every(cell => !cell));
+    this.setState({
+      grid : grid, 
+      hasWon : hasWon
+    });
   }
 
-  /** Render game board or winning message. */
+  /** Render game grid or winning message. */
   makeTable() {
-    let tblBoard = [];
-    for (let y = 0; y < this.props.nrows; y++) {
+    let tblgrid = [];
+    for (let x = 0; x < this.props.nbRows; x++) {
       let row = [];
-      for (let x = 0; x < this.props.ncols; x++) {
-        let coord = `${y}-${x}`;
+      for (let y = 0; y < this.props.nbCols; y++) {
+        let coord = `${x}-${y}`;
         row.push(
           <Cell
             key={coord}
-            isLit={this.state.board[y][x]}
+            isLit={this.state.grid[x][y]}
             flipCellsAroundMe={() => this.flipCellsAround(coord)}
           />
         );
       }
-      tblBoard.push(<tr key={y}>{row}</tr>);
+      tblgrid.push(<tr key={x}>{row}</tr>);
     }
     return (
-      <table className='Board'>
-        <tbody>{tblBoard}</tbody>
+      <table className='grid'>
+        <tbody>{tblgrid}</tbody>
       </table>
     );
   }
@@ -80,22 +80,21 @@ class Lightout extends Component {
       <div>
         {this.state.hasWon ? (
           <div className='winner'>
-            <span className='neon-orange'>YOU</span>
-            <span className='neon-blue'>WIN!</span>
+            <span className='neon-blue'>Victoire!!</span>
           </div>
         ) : (
           <div>
-            <br></br><br></br>
-            <div className='Board-title'>
-              <div className='neon-orange'>Lights</div>
-              <div className='neon-blue'>Out</div>
-            </div>
+            <div className='grid-title'><br></br>
+              <div className='neon-blue'>Lights Out</div>
+            <br></br>
             {this.makeTable()}
+            </div>
           </div>
         )}
+        
       </div>
+      
     );
   }
 }
-
 export default Lightout;

@@ -1,40 +1,50 @@
 import React from 'react';
 import { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import Axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import './App.css';
-import Footer from './components/Footer/Footer';
 import Routes from './components/Routes/Routes'
-
 import MyNavbar from './components/Navbar/MyNavbar';
+import './App.css';
+
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-        isconnected : false
+        user: ''
     }
 }
-componentDidMount = async () =>{
-  const isconnected = await localStorage.getItem("isconnected");
-  console.log(typeof isconnected);
-  console.log(isconnected)
-  if(isconnected === 'yes'){
-    this.setState({isconnected : true})
+  componentDidMount = () => {
+    const credentials = JSON.parse(localStorage.getItem('GamePlateformAuth'));
+
+    if (credentials && credentials.username && credentials.token) {
+      Axios.post('http://localhost:5000/isLogged', { credentials })
+      .then(res => {
+        if (res.data)
+            this.setState({ user : res.data });
+        else
+          window.location = '/login';
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    }
   }
-}
-  render(){
+
+  render() {
     return (
       <div className="App">
         <BrowserRouter>
             <Container className="p-0 background-image" fluid={true}>
-              <MyNavbar isconnected={this.state.isconnected}/>
-              <Routes isconnected={this.state.isconnected}/>
+              <MyNavbar user={this.state.user}/>
+              <Routes user={this.state.user}/>
               {/* <Footer/> */}
             </Container>
         </BrowserRouter>
       </div>
     );
   }
+
 }
 
 export default App;

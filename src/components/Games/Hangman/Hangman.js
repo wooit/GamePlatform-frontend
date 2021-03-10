@@ -7,82 +7,86 @@ import img3 from "../../../assets/games/hangman/3.jpg";
 import img4 from "../../../assets/games/hangman/4.jpg";
 import img5 from "../../../assets/games/hangman/5.jpg";
 import img6 from "../../../assets/games/hangman/6.jpg";
-import {randomWord} from './words.js';
+
+
+const words = ["python","javascript","lua","jquery","mysql","php","react","perl","ruby","css","html","symfony","laravel","angular","vuejs","ember",'backbone','django','nodejs','express']
+
+function randomWord(){
+    return words[Math.floor(Math.random()* words.length)];
+  }
 
 class Hangman extends Component {
-  /** by default, allow 6 guesses and use provided gallows images. */
   static defaultProps = {
-    maxWrong: 6,
-    images: [img0, img1, img2, img3, img4, img5, img6]
+    nbMaxError: 6,
+    images: [img0, img1, img2, img3, img4, img5, img6],
   };
-
+  
   constructor(props) {
     super(props);
-    //Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.
-    this.state = { nWrong: 0, guessed: new Set(), answer: randomWord() };
-    this.handleGuess = this.handleGuess.bind(this);
-    this.reset = this.reset.bind(this);
+    this.state = { 
+      nbMistakes: 0, 
+      guessedLetters: new Set(), 
+      answer: randomWord() 
+    };
+    //this.handleGuess = this.handleGuess.bind(this);
+    //this.reset = this.reset.bind(this);
   }
+ 
 //function reset btn pour restart with new word
-  reset(){
+  reset = () => {
     this.setState({
-      nWrong : 0,
-      guessed: new Set(),
+      nbMistakes : 0,
+      guessedLetters: new Set(),
       answer: randomWord()
     })
   }
 
-  /** guessedWord: show current-state of word:
-    if guessed letters are {a,p,e}, show "app_e" for "apple"
-  */
+ //Je retourne le mot secret. Split chaque lettre. New Array with map => check si lettre est dans le set guessedLetters. 
   guessedWord() {
     return this.state.answer
       .split("")
-      .map(ltr => (this.state.guessed.has(ltr) ? ltr : "_"));
+      .map(letter => (this.state.guessedLetters.has(letter) ? letter : "_"));
   }
 
-  /** handleGuest: handle a guessed letter:
-    - add to guessed letters
-    - if not in answer, increase number-wrong guesses
-  */
-  handleGuess(evt) {
-    let ltr = evt.target.value;
+ // Ajout de la lettre selectionnée à guessedLetters.
+ // j'incrémente nbMistakes si letter not incuded in answer
+  handleGuess = (evt) => {
+    let letter = evt.target.value;
     this.setState(st => ({
-      guessed: st.guessed.add(ltr),
-      nWrong: st.nWrong + (st.answer.includes(ltr) ? 0 : 1)
+      guessedLetters: st.guessedLetters.add(letter),
+      nbMistakes: st.nbMistakes + (st.answer.includes(letter) ? 0 : 1)
     }));
   }
 
-  /** generateButtons: return array of letter buttons to render */
+  //Je génère un bouton par lettre de l'alphabet.
   generateButtons() {
-    return "abcdefghijklmnopqrstuvwxyz".split("").map(ltr => (
+    return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
       <button
-        key={ltr}
-        value={ltr}
+        key={letter}
+        value={letter}
         onClick={this.handleGuess}
-        disabled={this.state.guessed.has(ltr)}
+        disabled={this.state.guessedLetters.has(letter)}
       >
-        {ltr}
+        {letter}
       </button>
     ));
   }
 
-  /** render: render game */
   render() {
-    const gameOver = this.state.nWrong >= this.props.maxWrong;
-    const altTxt = `${this.state.nWrong}/${this.props.maxWrong} guesses`;
+    const gameOver = this.state.nbMistakes >= this.props.nbMaxError;
     const isWinner = this.guessedWord().join('') === this.state.answer;
     let gameState = this.generateButtons();
-    if(isWinner) gameState = "Victoire";
-    if(gameOver) gameState = "Perdu :(";
+    if(isWinner) gameState = "Victoire"; // afin de remplacer mes boutons par un message de victoire ou défaite
+    if(gameOver) gameState = "Perdu :("; 
+    
     return (
       <div className="Container">
         <div className='Hangman'>
         <br></br><br></br>
-          <h1 className="Hangman-title">Le Pendu</h1>
+          <h1 className="Hangman-title-orange">Le Pendu</h1>
           <br></br><br></br><br></br>
-          <img src={this.props.images[this.state.nWrong]} alt={altTxt}/>
-          <p className="Hangman-text">Nombre d'erreurs: {this.state.nWrong}</p>
+          <img src={this.props.images[this.state.nbMistakes]} alt={''} />
+          <p className="Hangman-text">Nombre d'erreurs: {this.state.nbMistakes}</p>
           <p className='Hangman-word'>
             {!gameOver 
             ? this.guessedWord()

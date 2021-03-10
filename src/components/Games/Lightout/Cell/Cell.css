@@ -1,8 +1,12 @@
 .Cell {
-    height: 100px;
+    /* height: 100px;
     width: 100px;
     border-radius: 1px;
-    background-color: #263238;
+    background-color: #263238; */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(163, 19, 163);
     transition: background-color 0.7s ease;
     border-color: magenta;
     border-collapse: separate;

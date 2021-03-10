@@ -7,8 +7,6 @@
   
   .Hangman img {
     border: 10px solid white;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.27),
-      0 0 40px rgba(0, 0, 0, 0.06) inset;
   }
   
   .Hangman h1 {
@@ -60,7 +58,7 @@
   }
   
   .Hangman button:hover {
-    background-color: #ff9800;
+    background-color: #942673;
   }
   
   .Hangman button:disabled {
@@ -87,7 +85,7 @@
     justify-content: center;
   }
 
-  .Hangman-title{
+  .Hangman-title-orange{
       display: inline-flex;
       font-family: neon;
       color: #fb4264;
@@ -96,4 +94,31 @@
       animation: neon-orange 1s ease infinite;
       -moz-animation: neon-orange 1s ease infinite;
       -webkit-animation: neon-orange 1s ease infinite;
+  }
+
+  .Hangman-title-blue {
+    font-family: neon;
+    color: #426dfb;
+    font-size: 80px;
+    text-shadow: 0 0 3vw #2356ff;
+    animation: neon-blue 2s linear infinite;
+    -moz-animation: neon-blue 2s linear infinite;
+    -webkit-animation: neon-blue 2s linear infinite;
+    -o-animation: neon-blue 2s linear infinite;
+  }
+  
+
+
+  @keyframes neon-blue {
+    0%,
+    100% {
+      text-shadow: 0 0 1vw #13750a, 0 0 3vw #1d8a46, 0 0 10vw #188a44,
+        0 0 10vw #0fa81c, 0 0 0.4vw #8bfdfe, 0.5vw 0.5vw 0.1vw #46f1e3;
+      color: #28fef3;
+    }
+    50% {
+      text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180,
+        0 0 5vw #082180, 0 0 0.2vw #082180, 0.5vw 0.5vw 0.1vw #0a3940;
+      color: #146c80;
+    }
   }

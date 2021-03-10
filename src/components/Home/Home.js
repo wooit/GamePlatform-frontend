@@ -4,24 +4,15 @@ import TitleFormater from '../Formater/TitleFormater/TitleFormater';
 import HomeLog from './HomeLog';
 
 class Home extends Component {
-    checkIfUserLogged = () =>{
-        if (localStorage.length === 0) {
-            return <HomeLog/>
-        }
-    }
-
-    componentDidMount = () => {
-        console.log(this.props.isconnected);
-      }
     render() {
         return (
             <div>
-                <TitleFormater 
-                    title='Game Platform' 
-                    //subTitle='Préparation à la soutenance' 
-                    text='un petit aperçu de mon travail réalisé pendant mon stage'  
+                <TitleFormater
+                    title='Game Platform'
+                    //subTitle='Préparation à la soutenance'
+                    text='un petit aperçu de mon travail réalisé pendant mon stage'
                 />
-                 {this.checkIfUserLogged()}
+                {!this.props.user && <HomeLog/>}
 
                 {/* <>
                     <h4><a className="backgroundText" id="aTag"href="/login">Connectez vous</a> ou <a className="backgroundText" href="/login">créez votre premier compte</a><br></br>

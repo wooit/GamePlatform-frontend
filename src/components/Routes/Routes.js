@@ -11,12 +11,12 @@ class Routes extends Component {
     render() {
         return (
             <div>
-                <Route path="/" exact render={() => <Home/> }/>
-                <Route path="/about" exact render={() => <About/> }/>
-                <Route path="/games" exact render={() => <Games/> }/>
-                <Route path="/contact" exact render={() => <Contact/> }/>
-                <Route path="/login" exact render={() => <Login/> }/> 
-                <Route path="/register" exact render={() => <Register/> }/> 
+                <Route path="/" exact render = { () => <Home user={this.props.user}/> }/>
+                <Route path="/about" exact render = { () => <About user={this.props.user}/> }/>
+                <Route path="/games" exact render = { () => <Games user={this.props.user}/> }/>
+                <Route path="/contact" exact render = { () => <Contact user={this.props.user}/> }/>
+                <Route path="/login" exact render = { () => <Login user={this.props.user}/> }/> 
+                <Route path="/register" exact render = { () => <Register user={this.props.user}/> }/>
             </div>
         )
     }
