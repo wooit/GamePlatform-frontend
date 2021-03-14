@@ -41,32 +41,35 @@ class Register extends Component {
         return (
             <div>
                 <TitleFormater title="Register"/>
-                <TextFormater>
+     
                     <div className="Form">
                         <div className="Connec">
                             <form onSubmit={this.handleSubmitReg}>
                                 <p className="Login-text">Pas encore membre?</p>
                                 <h2 className="Login-text">Enregistrement</h2>
                                 {/* <label>Nom d'utilisateur</label> */}
-                                <input  type="text" 
-                                        //placeholder="votre nom d'utilisateur"
+                                <input  className="input"
+                                        type="text" 
+                                        placeholder="votre nom d'utilisateur"
                                         name='username'
                                         value={this.state.username} 
                                         onChange={this.handleChange}/>
                                 {/* <label>Mot de passe</label> */}
-                                <input  type="text" 
-                                        //placeholder="votre mot de passe"
+                                <input  className="input"
+                                        type="text" 
+                                        placeholder="votre mot de passe"
                                         name="password"
                                         value={this.state.password}
                                         onChange={this.handleChange}/>
-                                <button>Se connecter!!</button>
+                                        <br></br>
+                                <button className="button">Valider et jouer !!!</button>
                             </form>
                             <div className="backgroundText" id="error-message">
                                 { this.state.error ? this.state.error : '' }
                             </div>
                         </div>
                     </div>
-                </TextFormater>
+                
             </div>
         )
     }

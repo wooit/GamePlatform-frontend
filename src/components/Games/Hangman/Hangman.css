@@ -97,6 +97,7 @@
   }
 
   .Hangman-title-blue {
+    display: inline-flex;
     font-family: neon;
     color: #426dfb;
     font-size: 80px;

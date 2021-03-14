@@ -76,24 +76,24 @@ class Hangman extends Component {
     const gameOver = this.state.nbMistakes >= this.props.nbMaxError;
     const isWinner = this.guessedWord().join('') === this.state.answer;
     let gameState = this.generateButtons();
-    if(isWinner) gameState = "Victoire"; // afin de remplacer mes boutons par un message de victoire ou défaite
-    if(gameOver) gameState = "Perdu :("; 
+    if(isWinner) gameState = "Victory"; // afin de remplacer mes boutons par un message de victoire ou défaite
+    if(gameOver) gameState = "Defeat :("; 
     
     return (
       <div className="Container">
         <div className='Hangman'>
         <br></br><br></br>
-          <h1 className="Hangman-title-orange">Le Pendu</h1>
+          <h1 className="Hangman-title-blue">Le Pendu</h1>
           <br></br><br></br><br></br>
           <img src={this.props.images[this.state.nbMistakes]} alt={''} />
-          <p className="Hangman-text">Nombre d'erreurs: {this.state.nbMistakes}</p>
+          <p className="Hangman-text">Number of mistakes: {this.state.nbMistakes}</p>
           <p className='Hangman-word'>
             {!gameOver 
             ? this.guessedWord()
             : this.state.answer}
           </p>
           <p className='Hangman-btns'>{gameState}</p>
-          <button id='reset' onClick={this.reset}>Restart?</button>
+          <button id='reset' onClick={this.reset}>Try again?</button>
         </div>
       </div>
     );

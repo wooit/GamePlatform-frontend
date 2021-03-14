@@ -14,7 +14,7 @@ class App extends Component {
         user: ''
     }
 }
-  componentDidMount = () => {
+  componentWillMount = () => {
     const credentials = JSON.parse(localStorage.getItem('GamePlateformAuth'));
 
     if (credentials && credentials.username && credentials.token) {

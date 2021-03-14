@@ -32,7 +32,7 @@ class Lightout extends Component {
     let [x, y] = coord.split("-").map(Number);
 
     function flipCell(x, y) {
-      // if this coord is actually on grid, flip it
+      // flip the cell si elle est sur la grille
       if (x >= 0 && x < nbCols && y >= 0 && y < nbRows) {
         grid[x][y] = !grid[x][y];
       }
@@ -52,7 +52,6 @@ class Lightout extends Component {
     });
   }
 
-  /** Render game grid or winning message. */
   makeTable() {
     let tblgrid = [];
     for (let x = 0; x < this.props.nbRows; x++) {

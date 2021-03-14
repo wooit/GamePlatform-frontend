@@ -1,23 +1,50 @@
 .Form{
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
     justify-content: space-around;
     font: 800px;
 }
-.Register{
-    display: flex;
-    flex-direction: column;
-}
-.Connec{
-    display: flex;
-    flex-direction: column;
-}
+
 .Login-text {
-    text-align: center;
+    /* text-align: center;
+    display: inline-block; */
+    flex-direction: column;
     display: inline-block;
+    text-align: center;
     width: 250px;
     margin-top: 0;
     color:white;
     background-color: rgba(128, 0, 128, 0.603);
     font-weight: 900;
+    /* border:0.1em solid cyan; */
+    
   }
+  .button {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid cyan;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    border-radius: 50px;
+    color:cyan;
+    text-align:center;
+    transition: all 0.2s;
+    background-color: rgba(128, 0, 128, 0.603);
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.button:hover{
+    color: rgba(128, 0, 128, 0.603);
+    background-color:cyan;
+}
+
+.input{
+    background-color: rgb(150, 232, 246);
+    text-align:center;
+}
