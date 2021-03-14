@@ -58,6 +58,7 @@ class Lightout extends Component {
       let row = [];
       for (let y = 0; y < this.props.nbCols; y++) {
         let coord = `${x}-${y}`;
+        //console.log(coord)
         row.push(
           <Cell
             key={coord}
